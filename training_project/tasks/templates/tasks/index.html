@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Задачи</title>
+    <link rel="stylesheet" href="{% static 'tasks/style.css' %}">
+</head>
+<body>
+{% load mptt_tags %}
+<ul>
+    {% recursetree tasks %}
+        <li>
+            <div class="task_description">Задача: {{ node.name }}
+                Описание задачи: {{ node.description }}
+                Прогресс выполнения: {{ node.completion }}%
+                Дата начала: {{ node.date_start }}
+                Дата окончания: {{ node.date_end }}
+                Ответственный: {{ node.supervisor }}
+                Исполнитель: {{ node.executor }}
+            </div>
+
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>
+</body>
+</html>

@@ -1,0 +1,14 @@
+body {
+    font-family: Arial;
+    background-color: #1c1c1c;
+    font-size: 18px;
+}
+
+.task_description {
+    color: #e5e5e5;
+    white-space: pre-line;
+}
+
+li::marker {
+    color: #eb4444;
+}
