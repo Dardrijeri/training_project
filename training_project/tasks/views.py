@@ -15,10 +15,4 @@ def api(request):
         return HttpResponse("Invalid id")
     response = HttpResponse(data, content_type='application/json')
 
-    # workaround to avoid including cors library
-    response["Access-Control-Allow-Origin"] = "*"
-    response["Access-Control-Allow-Methods"] = "GET, OPTIONS"
-    response["Access-Control-Max-Age"] = "1000"
-    response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type"
-
     return response
